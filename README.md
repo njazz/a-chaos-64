@@ -8,6 +8,9 @@ A-Chaos Lib is a library of non-linear strange attractors for the max programmin
 Original source code can be found here:
 http://s373.net/code/A-Chaos-Lib/A-Chaos.html
 
+another github mirror of original objects
+https://github.com/s373/a-objects_maxmspjitter_00-07
+
 -----
 
 To build:
