@@ -4,7 +4,7 @@
 #ifndef compatibility_h
 #define compatibility_h
 
-#include <stdarg.h>
+#include "stdarg.h"
 #define __FILES__
 typedef void FSRef;
 
