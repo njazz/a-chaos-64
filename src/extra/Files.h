@@ -10,7 +10,7 @@ typedef void FSRef;
 
 // workaround for old types in objects' source code
 #ifdef WIN_VERSION
-#include "MacTypes.h"
+typedef unsigned char Boolean;
 #endif
 
 #endif /* compatibility_h */
