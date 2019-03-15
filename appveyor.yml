@@ -11,7 +11,12 @@ configuration:
 - Release
 - Debug
 platform:
+- x86
 - x64
+
+environment:
+  matrix:
+  - arch: Win64
 
 # skip unsupported combinations
 init:
