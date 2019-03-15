@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
-SET(CMAKE_CXX_FLAGS "-std=c++11")
+# SET(CMAKE_CXX_FLAGS "-std=c++11")
 
-project (a_chaos_64)
+project (a_chaos_64 C)
 
 include_directories(./src)
 include_directories(./src/extra)
@@ -26,14 +26,11 @@ if (WIN32)
     
 endif()
 
-target_link_libraries(py_shared ${PYTHON_LIBRARIES})
-
 macro(a_chaos_external name_ext_)
     set(name_ ${name_ext_})
     set(obj_ "${name_ext_}")
     add_library(${name_} MODULE src/${name_}.c)
-    set_property(TARGET ${name_} PROPERTY CXX_STANDARD 11)
-
+    
     target_link_libraries(${name_} PRIVATE ${LIBS} "-undefined dynamic_lookup")
     set_target_properties(${name_} PROPERTIES PREFIX "")
     set_target_properties(${name_} PROPERTIES SUFFIX ".mxo")

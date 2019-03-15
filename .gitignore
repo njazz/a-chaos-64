@@ -1,2 +1,4 @@
 build/
 package/
+
+CMakeLists.txt.user
