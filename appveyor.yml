@@ -50,11 +50,12 @@ before_build:
 # ls
 build_script:
   - set VERBOSE=1
-  - mkdir build
-  - cd build
-  - cmake --version
-  - cmake ..
-  - make
+  - '%APPVEYOR_BUILD_FOLDER%\scripts\appveyor-build.bat'
+# - mkdir build
+# - cd build
+# - cmake --version
+# - cmake ..
+# - make
 #   project: c:\projects\cmake-init\build\a_chaos_64.sln
 #   verbosity: minimal
 #   parallel: true
