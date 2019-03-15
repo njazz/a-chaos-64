@@ -8,4 +8,9 @@
 #define __FILES__
 typedef void FSRef;
 
+// workaround for old types in objects' source code
+#ifdef WIN_VERSION
+#include "MacTypes.h"
+#endif
+
 #endif /* compatibility_h */
