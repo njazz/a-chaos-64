@@ -18,7 +18,7 @@ add_definitions(-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE)
 # SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
 SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /EHsc")
 # set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -include ${PROJECT_SOURCE_DIR}/src/extra/Types.h")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /FI ${PROJECT_SOURCE_DIR}/src/extra/Types.h")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /FI${PROJECT_SOURCE_DIR}/src/extra/Types.h")
 SET (LINK_FLAGS "${LINK_FLAGS} -shared --enable-auto-import")
 
 endif()

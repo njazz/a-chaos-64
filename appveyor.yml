@@ -58,5 +58,5 @@ before_build:
 
 build:
   project: c:\projects\cmake-init\build\a_chaos_64.sln
-  verbosity: minimal
+# verbosity: minimal
   parallel: true
