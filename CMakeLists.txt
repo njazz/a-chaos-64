@@ -47,9 +47,16 @@ macro(a_chaos_external name_ext_)
     endif()
 
     set_target_properties(${name_} PROPERTIES PREFIX "")
-    set_target_properties(${name_} PROPERTIES SUFFIX ".mxo")
     set_target_properties(${name_} PROPERTIES BUNDLE TRUE)
-    set_target_properties(${name_} PROPERTIES BUNDLE_EXTENSION "mxo")
+
+    if (WIN32)
+      set_target_properties(${name_} PROPERTIES BUNDLE_EXTENSION "mxe")
+      set_target_properties(${name_} PROPERTIES SUFFIX ".mxe")
+
+    else()
+      set_target_properties(${name_} PROPERTIES SUFFIX ".mxo")
+      set_target_properties(${name_} PROPERTIES BUNDLE_EXTENSION "mxo")
+    endif()
 
     install(TARGETS ${name_} DESTINATION ${PROJECT_SOURCE_DIR}/bin)
 
