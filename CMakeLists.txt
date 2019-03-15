@@ -26,7 +26,7 @@ include_directories(submodules/max-sdk/source/c74support/max-includes)
 set (CMAKE_OSX_ARCHITECTURES "x86_64" "i386")
 
 if (WIN32)
-    
+
 endif()
 
 macro(a_chaos_external name_ext_)
@@ -36,13 +36,13 @@ macro(a_chaos_external name_ext_)
 
     if (WIN32)
         # LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/submodules/max-sdk/source/c74support/max-includes/x64/)
-	# target_link_libraries(${name_} -L${PROJECT_SOURCE_DIR}/submodules/max-sdk/source/c74support/max-includes/x64/)
+	target_link_libraries(${name_} -L${PROJECT_SOURCE_DIR}/submodules/max-sdk/source/c74support/max-includes/x64/)
 	target_link_libraries(${name_} -L${PROJECT_SOURCE_DIR}/submodules/max-sdk/source/c74support/max-includes/)
         target_link_libraries(${name_} MaxAPI.lib)
-        target_link_libraries(${name_} maxcrt.lib)
-        target_link_libraries(${name_} maxcrt_p.lib)
+        # target_link_libraries(${name_} maxcrt.lib)
+        # target_link_libraries(${name_} maxcrt_p.lib)
     endif()
-    
+
     set_target_properties(${name_} PROPERTIES PREFIX "")
     set_target_properties(${name_} PROPERTIES SUFFIX ".mxo")
     set_target_properties(${name_} PROPERTIES BUNDLE TRUE)
