@@ -2,6 +2,7 @@
 This is a copy of André Sier "A-Chaos" library for MaxMSP updated for Max 7/8 32/64 bit
 
 [![Build Status](https://travis-ci.org/njazz/a-chaos-64.svg?branch=master)](https://travis-ci.org/njazz/a-chaos-64)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnjazz%2Fa-chaos-64.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnjazz%2Fa-chaos-64?ref=badge_shield)
 
 A-Chaos Lib is a library of non-linear strange attractors for the max programming environment extended from Richard Dudas' Chaos Collection, including the source.
 
@@ -49,3 +50,7 @@ or
 ```
 ./install-package-8-osx.sh
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnjazz%2Fa-chaos-64.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnjazz%2Fa-chaos-64?ref=badge_large)
