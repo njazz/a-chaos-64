@@ -18,6 +18,7 @@ add_definitions(-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE)
 SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -include ${PROJECT_SOURCE_DIR}/src/extra/Types.h")
 SET (LINK_FLAGS "${LINK_FLAGS} -shared --enable-auto-import")
+
 endif()
 
 include_directories(submodules/max-sdk/source/c74support/max-includes)
@@ -32,6 +33,12 @@ macro(a_chaos_external name_ext_)
     set(name_ ${name_ext_})
     set(obj_ "${name_ext_}")
     add_library(${name_} MODULE src/${name_}.c)
+
+    if (WIN32)
+        LINK_LIBRARIES(${name_} submodules/max-sdk/source/c74support/max-includes/x64/MaxAPI.lib)
+        LINK_LIBRARIES(${name_} submodules/max-sdk/source/c74support/max-includes/x64/maxcrt.lib)
+        LINK_LIBRARIES(${name_} submodules/max-sdk/source/c74support/max-includes/x64/maxcrt_p.lib)
+    endif()
     
     set_target_properties(${name_} PROPERTIES PREFIX "")
     set_target_properties(${name_} PROPERTIES SUFFIX ".mxo")
