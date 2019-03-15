@@ -8,6 +8,7 @@ include_directories(./src/extra)
 
 if(APPLE)
 add_definitions(-DMAC_VERSION)
+SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -undefined dynamic_lookup")
 endif()
 
 if (WIN32)
@@ -32,7 +33,6 @@ macro(a_chaos_external name_ext_)
     set(obj_ "${name_ext_}")
     add_library(${name_} MODULE src/${name_}.c)
     
-    target_link_libraries(${name_} PRIVATE ${LIBS} "-undefined dynamic_lookup")
     set_target_properties(${name_} PROPERTIES PREFIX "")
     set_target_properties(${name_} PROPERTIES SUFFIX ".mxo")
     set_target_properties(${name_} PROPERTIES BUNDLE TRUE)
