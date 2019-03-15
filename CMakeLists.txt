@@ -35,9 +35,9 @@ macro(a_chaos_external name_ext_)
     add_library(${name_} MODULE src/${name_}.c)
 
     if (WIN32)
-        target_link_libraries(${name_} submodules/max-sdk/source/c74support/max-includes/x64/MaxAPI.lib)
-        target_link_libraries(${name_} submodules/max-sdk/source/c74support/max-includes/x64/maxcrt.lib)
-        target_link_libraries(${name_} submodules/max-sdk/source/c74support/max-includes/x64/maxcrt_p.lib)
+        target_link_libraries(${name_} ${PROJECT_SOURCE_DIR}/submodules/max-sdk/source/c74support/max-includes/x64/MaxAPI.lib)
+        target_link_libraries(${name_} ${PROJECT_SOURCE_DIR}/submodules/max-sdk/source/c74support/max-includes/x64/maxcrt.lib)
+        target_link_libraries(${name_} ${PROJECT_SOURCE_DIR}/submodules/max-sdk/source/c74support/max-includes/x64/maxcrt_p.lib)
     endif()
     
     set_target_properties(${name_} PROPERTIES PREFIX "")
