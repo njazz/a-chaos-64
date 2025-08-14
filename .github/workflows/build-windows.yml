@@ -14,12 +14,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Git
-      run: git config --global --add safe.directory ${{ github.workspace }}
+    # - name: Set up Git
+    #   run: git config --global --add safe.directory ${{ github.workspace }}
 
     - name: Download a-chaos-64
       run: |
-        git clone --branch master https://github.com/njazz/a-chaos-64 sources/a-chaos-64
+        git clone --branch dev-1 https://github.com/njazz/a-chaos-64 sources/a-chaos-64
 
     - name: Download Max SDK
       run: |
@@ -60,7 +60,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v1.0-windows
+        tag_name: v0.1-windows-${{ github.run_number }}
         release_name: a-chaos-64 Windows
         draft: false
         prerelease: false
