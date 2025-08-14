@@ -53,12 +53,16 @@ jobs:
         zip -r a-chaos-64-macos.zip package/a-chaos-64
 
     - name: Get or create release
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         gh release view latest-windows || gh release create latest-windows --title "a-chaos-64 macOS"
         UPLOAD_URL=$(gh release view latest-windows --json uploadUrl -q .uploadUrl)
         echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
     - name: Upload ZIP
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: gh release upload latest-windows sources/a-chaos-64/a-chaos-64-macos.zip --clobber
 
     # - name: Create Release
