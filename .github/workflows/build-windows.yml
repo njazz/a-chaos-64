@@ -62,15 +62,15 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        gh release view latest-windows || gh release create latest-windows --title "a-chaos-64 Windows"
-        UPLOAD_URL=$(gh release view latest-windows --json uploadUrl -q .uploadUrl)
+        gh release view latest-windows || gh release create latest --title "a-chaos-64 latest"
+        UPLOAD_URL=$(gh release view latest --json uploadUrl -q .uploadUrl)
         echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
     - name: Upload ZIP
       shell: bash
       env:
         GH_TOKEN: ${{ github.token }}
-      run: gh release upload latest-windows sources/a-chaos-64/a-chaos-64-windows.zip --clobber
+      run: gh release upload latest sources/a-chaos-64/a-chaos-64-windows.zip --clobber
 
     # - name: Create Release
     #   uses: actions/create-release@v1
