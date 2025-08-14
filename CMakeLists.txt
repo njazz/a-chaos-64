@@ -1,13 +1,23 @@
-cmake_minimum_required (VERSION 2.8)
-# SET(CMAKE_CXX_FLAGS "-std=c++11")
+# MAX SDK
+if (NOT MAX_SDK_DIR)
+message("MAX SDK Directory not specified, using ../max-sdk-8.2")
+set(MAX_SDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../max-sdk-8.2)
+if(NOT EXISTS "${MAX_SDK_DIR}")
+  message(FATAL "MAX SDK was not found at ${MAX_SDK_DIR}")
+endif()
+endif()
+
+message("Using MAX SDK Folder: ${MAX_SDK_DIR}")
+
+cmake_minimum_required (VERSION 3.1)
 
 project (a_chaos_64 C)
 
-include_directories(./src)
-include_directories(./src/extra)
+
 
 if(APPLE)
 add_definitions(-DMAC_VERSION)
+add_definitions(-DSymbol=t_symbol -DAtom=t_atom)
 SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -undefined dynamic_lookup")
 endif()
 
@@ -16,6 +26,7 @@ if (WIN32)
 add_definitions(-DWIN_VERSION)
 add_definitions(-DNOMINMAX)
 add_definitions(-DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE)
+
 SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /EHsc")
 SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W0")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /FI${PROJECT_SOURCE_DIR}/src/extra/Types.h")
@@ -23,9 +34,9 @@ SET (LINK_FLAGS "${LINK_FLAGS} -shared --enable-auto-import")
 
 endif()
 
-include_directories(submodules/max-sdk/source/c74support/max-includes)
+# include_directories(submodules/max-sdk/source/c74support/max-includes)
 
-set (CMAKE_OSX_ARCHITECTURES "x86_64" "i386")
+set (CMAKE_OSX_ARCHITECTURES "x86_64" "arm64")
 
 if (WIN32)
 
@@ -36,18 +47,20 @@ macro(a_chaos_external name_ext_)
     set(obj_ "${name_ext_}")
     add_library(${name_} MODULE src/${name_}.c)
 
+    target_include_directories(${name_} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+    target_include_directories(${name_} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/extra)
+    target_include_directories(${name_} PRIVATE ${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes)
+
     if (WIN32)
-        target_link_libraries(${name_} ${PROJECT_SOURCE_DIR}/submodules/max-sdk/source/c74support/max-includes/x64/MaxAPI.lib)
-        # target_link_libraries(${name_} maxcrt.lib)
-        # target_link_libraries(${name_} maxcrt_p.lib)
+        target_link_libraries(${name_} ${PROJECT_SOURCE_DIR}/source/max-sdk-base/c74support/max-includes/x64/MaxAPI.lib)
     endif()
 
     set_target_properties(${name_} PROPERTIES PREFIX "")
     set_target_properties(${name_} PROPERTIES BUNDLE TRUE)
 
     if (WIN32)
-      set_target_properties(${name_} PROPERTIES BUNDLE_EXTENSION "mxe")
-      set_target_properties(${name_} PROPERTIES SUFFIX ".mxe")
+      set_target_properties(${name_} PROPERTIES BUNDLE_EXTENSION "mxe64")
+      set_target_properties(${name_} PROPERTIES SUFFIX ".mxe64")
 
     else()
       set_target_properties(${name_} PROPERTIES SUFFIX ".mxo")
