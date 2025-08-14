@@ -1,7 +1,7 @@
 #!/bin/bash
-./make-package-osx.sh
+./scripts/make-package-osx.sh
 
-cd ..
+# cd ..
 
 mkdir ~/Documents/Max\ 7/Packages/a\-chaos\-64
 mkdir ~/Documents/Max\ 7/Packages/a\-chaos\-64/externals
