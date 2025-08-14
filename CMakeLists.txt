@@ -51,7 +51,15 @@ macro(a_chaos_external name_ext_)
     target_include_directories(${name_} PRIVATE ${CMAKE_SOURCE_DIR}/src/extra)
     target_include_directories(${name_} PRIVATE ${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes)
 
+    if(NOT EXISTS "${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes")
+      message(FATAL "MAX SDK was not found at ${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes")
+    endif()
+
     if (WIN32)
+        if(NOT EXISTS "${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes/x64")
+          message(FATAL "MAX SDK was not found at ${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes/x64")
+        endif()
+
         target_link_libraries(${name_} ${CMAKE_SOURCE_DIR}/source/max-sdk-base/c74support/max-includes/x64/MaxAPI.lib)
     endif()
 
