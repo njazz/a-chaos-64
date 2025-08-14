@@ -24,6 +24,8 @@ jobs:
     - name: Download Max SDK
       run: |
         git clone https://github.com/Cycling74/max-sdk sources/max-sdk-8.2
+        cd sources/max-sdk-8.2
+        git submodule update --init --recursive
 
     - name: Create build folder
       run: mkdir sources\a-chaos-64\build
