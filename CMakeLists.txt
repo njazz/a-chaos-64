@@ -1,7 +1,9 @@
+cmake_minimum_required (VERSION 3.11)
+
 # MAX SDK
 if (NOT MAX_SDK_DIR)
 message("MAX SDK Directory not specified, using ../max-sdk-8.2")
-set(MAX_SDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../max-sdk-8.2)
+set(MAX_SDK_DIR ${CMAKE_SOURCE_DIR}/../max-sdk-8.2)
 if(NOT EXISTS "${MAX_SDK_DIR}")
   message(FATAL "MAX SDK was not found at ${MAX_SDK_DIR}")
 endif()
@@ -9,11 +11,7 @@ endif()
 
 message("Using MAX SDK Folder: ${MAX_SDK_DIR}")
 
-cmake_minimum_required (VERSION 3.1)
-
 project (a_chaos_64 C)
-
-
 
 if(APPLE)
 add_definitions(-DMAC_VERSION)
@@ -49,12 +47,12 @@ macro(a_chaos_external name_ext_)
     set(obj_ "${name_ext_}")
     add_library(${name_} MODULE src/${name_}.c)
 
-    target_include_directories(${name_} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-    target_include_directories(${name_} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/extra)
+    target_include_directories(${name_} PRIVATE ${CMAKE_SOURCE_DIR}/src)
+    target_include_directories(${name_} PRIVATE ${CMAKE_SOURCE_DIR}/src/extra)
     target_include_directories(${name_} PRIVATE ${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes)
 
     if (WIN32)
-        target_link_libraries(${name_} ${PROJECT_SOURCE_DIR}/source/max-sdk-base/c74support/max-includes/x64/MaxAPI.lib)
+        target_link_libraries(${name_} ${CMAKE_SOURCE_DIR}/source/max-sdk-base/c74support/max-includes/x64/MaxAPI.lib)
     endif()
 
     set_target_properties(${name_} PROPERTIES PREFIX "")
@@ -69,7 +67,7 @@ macro(a_chaos_external name_ext_)
       set_target_properties(${name_} PROPERTIES BUNDLE_EXTENSION "mxo")
     endif()
 
-    install(TARGETS ${name_} DESTINATION ${PROJECT_SOURCE_DIR}/bin)
+    install(TARGETS ${name_} DESTINATION ${CMAKE_SOURCE_DIR}/bin)
 
     set_target_properties(${name_} PROPERTIES OUTPUT_NAME ${obj_})
 endmacro(a_chaos_external)

@@ -1,0 +1,71 @@
+name: Build a-chaos-64 macOS
+
+on:
+  push:
+    branches:
+      - dev-1
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Download a-chaos-64
+      run: |
+        git clone --branch dev-1 https://github.com/njazz/a-chaos-64 sources/a-chaos-64
+
+    - name: Download Max SDK
+      run: |
+        git clone https://github.com/Cycling74/max-sdk sources/max-sdk-8.2
+
+    - name: Create build folder
+      run: mkdir -p sources/a-chaos-64/build
+
+    - name: Configure CMake
+      run: |
+        cd sources/a-chaos-64/build
+        cmake ..
+
+    - name: Build project
+      run: |
+        cd sources/a-chaos-64/build
+        cmake --build . --config Release
+
+    - name: Prepare package
+      run: |
+        cd sources/a-chaos-64
+        mkdir -p package/a-chaos-64/externals
+        mkdir -p package/a-chaos-64/help
+        mkdir -p package/a-chaos-64/extras
+        cp build/a*.mxo package/a-chaos-64/externals/
+        cp help/*.maxhelp package/a-chaos-64/help/
+        cp extras/*.* package/a-chaos-64/extras/
+
+    - name: Create ZIP
+      run: |
+        cd sources/a-chaos-64
+        zip -r a-chaos-64-macos.zip package/a-chaos-64
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v0.1-macos-${{ github.run_number }}
+        release_name: a-chaos-64 macOS
+        draft: false
+        prerelease: false
+
+    - name: Upload ZIP to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: sources/a-chaos-64/a-chaos-64-macos.zip
+        asset_name: a-chaos-64-macos.zip
+        asset_content_type: application/zip
