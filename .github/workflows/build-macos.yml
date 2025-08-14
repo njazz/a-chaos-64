@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-macos:
-    runs-on: macos-latest
+    runs-on: macOS
 
     steps:
     - name: Checkout repository
@@ -56,7 +56,7 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        gh release view latest-windows || gh release create latest-windows --title "a-chaos-64 macOS"
+        gh release view latest-macos || gh release create latest-macos --title "a-chaos-64 macOS"
         UPLOAD_URL=$(gh release view latest-windows --json uploadUrl -q .uploadUrl)
         echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
