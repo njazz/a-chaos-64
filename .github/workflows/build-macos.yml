@@ -56,7 +56,7 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        gh release view latest-macos || gh release create latest --title "a-chaos-64 latest"
+        gh release view latest || gh release create latest --title "a-chaos-64 latest"
         UPLOAD_URL=$(gh release view latest --json uploadUrl -q .uploadUrl)
         echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
