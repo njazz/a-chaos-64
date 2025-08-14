@@ -23,7 +23,7 @@ jobs:
         git clone https://github.com/Cycling74/max-sdk sources/max-sdk-8.2
         cd sources/max-sdk-8.2
         git submodule update --init --recursive
-        
+
     - name: Create build folder
       run: mkdir -p sources/a-chaos-64/build
 
@@ -43,9 +43,9 @@ jobs:
         mkdir -p package/a-chaos-64/externals
         mkdir -p package/a-chaos-64/help
         mkdir -p package/a-chaos-64/extras
-        cp build/a*.mxo package/a-chaos-64/externals/
-        cp help/*.maxhelp package/a-chaos-64/help/
-        cp extras/*.* package/a-chaos-64/extras/
+        cp -r build/a*.mxo package/a-chaos-64/externals/
+        cp -r help/*.maxhelp package/a-chaos-64/help/
+        cp -r extras/*.* package/a-chaos-64/extras/
 
     - name: Create ZIP
       run: |

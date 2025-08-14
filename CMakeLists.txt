@@ -13,9 +13,10 @@ message("Using MAX SDK Folder: ${MAX_SDK_DIR}")
 
 project (a_chaos_64 C)
 
+add_definitions(-DSymbol=t_symbol -DAtom=t_atom)
+
 if(APPLE)
 add_definitions(-DMAC_VERSION)
-add_definitions(-DSymbol=t_symbol -DAtom=t_atom)
 SET (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -undefined dynamic_lookup")
 # add_compile_options(-undefined dynamic_lookup)
 SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -undefined dynamic_lookup")
