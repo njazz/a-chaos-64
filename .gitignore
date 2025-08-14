@@ -1,4 +1,5 @@
-build/
-package/
+build/*
+builds/*
+package/*
 
 CMakeLists.txt.user

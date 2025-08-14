@@ -1,8 +1,11 @@
 # a-chaos-64
-This is a copy of André Sier "A-Chaos" library for MaxMSP updated for Max 7/8 32/64 bit
+This is a copy of André Sier "A-Chaos" library for MaxMSP updated for Max 7/8/9 64 bit x86 / arm64
 
-[![Build Status](https://travis-ci.org/njazz/a-chaos-64.svg?branch=master)](https://travis-ci.org/njazz/a-chaos-64)
-[![Build status](https://ci.appveyor.com/api/projects/status/lhqlqbeg4dhtbqwc?svg=true)](https://ci.appveyor.com/project/njazz/a-chaos-64)
+[![Build a-chaos-64 Windows](https://github.com/njazz/a-chaos-64/actions/workflows/build-windows.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/build-windows.yml)
+[![Build a-chaos-64 macOS](https://github.com/njazz/a-chaos-64/actions/workflows/build-macos.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/build-macos.yml)  
+  
+[![Deploy a-chaos-64 Windows](https://github.com/njazz/a-chaos-64/actions/workflows/deploy-windows.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/deploy-windows.yml)
+[![Deploy a-chaos-64 macOS](https://github.com/njazz/a-chaos-64/actions/workflows/deploy-macos.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/deploy-macos.yml)
 
 A-Chaos Lib is a library of non-linear strange attractors for the max programming environment extended from Richard Dudas' Chaos Collection, including the source.
 
@@ -16,7 +19,12 @@ https://github.com/s373/a-objects_maxmspjitter_00-07
 
 -----
 
-To build:
+#### Dependencies:
+* Clone MAX SDK https://github.com/Cycling74/max-sdk to THISDIR/../max-sdk-8.2  
+or  
+* Specify the folder with -DMAX_SDK_DIR= flag for cmake
+
+#### To build:
 
 ```
 mkdir build
@@ -28,15 +36,13 @@ make
 or
 
 ```
-cd scripts
-./build.sh
+./scripts/build.sh
 ```
 
-To make package / install package:
+#### To make package / install package:
 
 ```
-cd scripts
-./make-package-osx.sh
+./cd scripts/make-package-osx.sh
 ```
 
 or
@@ -45,8 +51,10 @@ or
 ./install-package-7-osx.sh
 ```
 
-or
-
 ```
 ./install-package-8-osx.sh
+```
+
+```
+./install-package-9-osx.sh
 ```

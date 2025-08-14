@@ -1,7 +1,8 @@
 #!/bin/bash
-./build.sh
 
-cd ..
+./scripts/build.sh
+
+# cd ..
 
 mkdir package
 mkdir package/a-chaos-64

@@ -1,9 +1,9 @@
 /*
 
-ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
-a-lyapunov - © andrŽ sier 2004
+Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘
+a-lyapunov - Â© andrÅ½ sier 2004
 	
-inspired by Paul Bourke, implementation by AndrŽ Sier	
+inspired by Paul Bourke, implementation by AndrÅ½ Sier	
 		
 lyapunov random attractors
 
@@ -39,7 +39,7 @@ References
 
  Peitgen, H., Jurgens, H., Saupe, D
  Lyapunov exponents and chaotic attractors in Choas and fractals - new frontiers of science. Springer, new York, 1992.
-ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘Ã‘
 */
 
 #include "ext.h"
@@ -430,7 +430,7 @@ void main(void)
  addmess((method)lyapunov_ny, "y", A_DEFFLOAT, 0);
  addmess((method)lyapunov_om, "om", A_DEFLONG, 0);
  addmess((method)lyapunov_assist,"assist", A_CANT, 0);
- post("A-Chaos Lib :: a-lyapunov  " __DATE__" "__TIME__"                                   ©   a n d r Ž s i e r   2 0 0 4   all rights reserved",tick, 0);
+ post("A-Chaos Lib :: a-lyapunov  " __DATE__" "__TIME__"                                   Â©   a n d r Å½ s i e r   2 0 0 4   all rights reserved",tick, 0);
 }
 
 

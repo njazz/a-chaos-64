@@ -1,7 +1,7 @@
 /*
 
-ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
-a - lorenz © andrŽ sier 20030914
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+a - lorenz Â© andrÃ© sier 20030914
 		
 		lorenz chaos by heuns method
 		extra accuracy
@@ -12,7 +12,7 @@ for great work implementing non-linearity in max
 sigma replaced with a
 b replaced with c
 
-ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 */
 
 #include "ext.h"
@@ -309,13 +309,13 @@ void main(void)
  addmess((method)lorenz_om,"om", A_DEFLONG, 0);
 
  addmess((method)lorenz_assist,"assist", A_CANT, 0);
- post("A-Chaos Lib :: a-lorenz  " __DATE__" "__TIME__"                                   ©   a n d r Ž s i e r   2 0 0 4   all rights reserved",tick, 0);
+ post("A-Chaos Lib :: a-lorenz  " __DATE__" "__TIME__"                                   Â©   a n d r Ã© s i e r   2 0 0 4   all rights reserved",tick, 0);
 }
 
 
 void lorenz_assist(lorenz *x, void *b, long m, long a, char *s)
 {
-    if (m==1) { sprintf(s,"bang, (int), (float), ·, ¶ª"); }   
+    if (m==1) { sprintf(s,"bang, (int), (float), âˆ‘, âˆ‚â„¢"); }   
     else if (m==2&&a==0) { sprintf(s,"(float) x  l o r e n t z   e         c            h              o"); }
     else if (m==2&&a==1) { sprintf(s,"(float) y  l o r e n t z   e         c            h              o"); }
     else if (m==2&&a==2) { sprintf(s,"(float) z  l o r e n t z   e         c            h              o"); }

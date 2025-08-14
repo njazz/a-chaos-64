@@ -1,0 +1,93 @@
+name: Latest Build Windows
+
+on:
+  push:
+    branches:
+      - dev-1      
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-2022
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # - name: Set up Git
+    #   run: git config --global --add safe.directory ${{ github.workspace }}
+
+    - name: Download a-chaos-64
+      run: |
+        git clone --branch dev-1 https://github.com/njazz/a-chaos-64 sources/a-chaos-64
+
+    - name: Download Max SDK
+      run: |
+        git clone https://github.com/Cycling74/max-sdk sources/max-sdk-8.2
+        cd sources/max-sdk-8.2
+        git submodule update --init --recursive
+
+    - name: Create build folder
+      run: mkdir sources\a-chaos-64\build
+
+    - name: Configure CMake
+      run: |
+        cd sources\a-chaos-64\build
+        cmake ..
+
+    - name: Build project
+      run: |
+        cd sources\a-chaos-64\build
+        cmake --build . --config Release
+
+    - name: Prepare package
+      run: |
+        cd sources\a-chaos-64
+        mkdir package
+        mkdir package\a-chaos-64
+        mkdir package\a-chaos-64\externals
+        mkdir package\a-chaos-64\help
+        mkdir package\a-chaos-64\extras
+        copy build\a*.mxo package\a-chaos-64\externals\
+        copy help\*.maxhelp package\a-chaos-64\help\
+        copy extras\*.* package\a-chaos-64\extras\
+
+    - name: Create ZIP
+      run: |
+        cd sources\a-chaos-64
+        powershell Compress-Archive -Path package\a-chaos-64\* -DestinationPath a-chaos-64-windows.zip
+    
+    - name: Get or create release
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh release view latest || gh release create latest --title "a-chaos-64 latest"
+        UPLOAD_URL=$(gh release view latest --json uploadUrl -q .uploadUrl)
+        echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
+
+    - name: Upload ZIP
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release upload latest sources/a-chaos-64/a-chaos-64-windows.zip --clobber
+
+    # - name: Create Release
+    #   uses: actions/create-release@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     tag_name: v0.1-windows-${{ github.run_number }}
+    #     release_name: a-chaos-64 Windows
+    #     draft: false
+    #     prerelease: false
+
+    # - name: Upload ZIP to Release
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+    #     asset_path: sources\a-chaos-64\a-chaos-64-windows.zip
+    #     asset_name: a-chaos-64-windows.zip
+    #     asset_content_type: application/zip
