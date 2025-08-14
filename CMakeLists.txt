@@ -61,7 +61,7 @@ macro(a_chaos_external name_ext_)
           message(FATAL_ERROR "MAX SDK was not found at ${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes/x64")
         endif()
 
-        target_link_libraries(${name_} ${CMAKE_SOURCE_DIR}/source/max-sdk-base/c74support/max-includes/x64/MaxAPI.lib)
+        target_link_libraries(${name_} ${MAX_SDK_DIR}/source/max-sdk-base/c74support/max-includes/x64/MaxAPI.lib)
     endif()
 
     set_target_properties(${name_} PROPERTIES PREFIX "")
