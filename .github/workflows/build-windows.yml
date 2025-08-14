@@ -58,6 +58,7 @@ jobs:
         powershell Compress-Archive -Path package\a-chaos-64\* -DestinationPath a-chaos-64-windows.zip
     
     - name: Get or create release
+      shell: bash
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
@@ -66,6 +67,7 @@ jobs:
         echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
     - name: Upload ZIP
+      shell: bash
       env:
         GH_TOKEN: ${{ github.token }}
       run: gh release upload latest-windows sources/a-chaos-64/a-chaos-64-windows.zip --clobber
