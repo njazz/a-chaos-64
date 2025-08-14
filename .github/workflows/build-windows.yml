@@ -56,23 +56,32 @@ jobs:
       run: |
         cd sources\a-chaos-64
         powershell Compress-Archive -Path package\a-chaos-64\* -DestinationPath a-chaos-64-windows.zip
+    
+    - name: Get or create release
+      run: |
+        gh release view latest-windows || gh release create latest-windows --title "a-chaos-64 Windows"
+        UPLOAD_URL=$(gh release view latest-windows --json uploadUrl -q .uploadUrl)
+        echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
-    - name: Create Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v0.1-windows-${{ github.run_number }}
-        release_name: a-chaos-64 Windows
-        draft: false
-        prerelease: false
+    - name: Upload ZIP
+      run: gh release upload latest-windows sources/a-chaos-64/a-chaos-64-windows.zip --clobber
 
-    - name: Upload ZIP to Release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: sources\a-chaos-64\a-chaos-64-windows.zip
-        asset_name: a-chaos-64-windows.zip
-        asset_content_type: application/zip
+    # - name: Create Release
+    #   uses: actions/create-release@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     tag_name: v0.1-windows-${{ github.run_number }}
+    #     release_name: a-chaos-64 Windows
+    #     draft: false
+    #     prerelease: false
+
+    # - name: Upload ZIP to Release
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+    #     asset_path: sources\a-chaos-64\a-chaos-64-windows.zip
+    #     asset_name: a-chaos-64-windows.zip
+    #     asset_content_type: application/zip
