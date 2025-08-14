@@ -1,7 +1,7 @@
 /*
 
-ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
-a - navierstokese © andrŽ sier 20030914
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+a - navierstokese Â© andrÃ© sier 20030914
 		
 a port from RD's navier-stokese
 
@@ -28,9 +28,9 @@ Where <reyn> is the Reynolds number,
 and exibits  an interesting variety of different behaviors for different 
 ranges of <reyn>. For the critical values of <reyn>, the most interesting
 feature is the stochastic behavior observed when  R1 < <reyn> < R2.
-With 28.73 < R1 > 29.0 and R2 ± = 33.43. 
+With 28.73 < R1 > 29.0 and R2 Â± = 33.43. 
 
-ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 */
 
 #include "ext.h"
@@ -301,13 +301,13 @@ void main(void)
  addmess((method)navierstokese_om,"om", A_DEFLONG, 0);
 
  addmess((method)navierstokese_assist,"assist", A_CANT, 0);
- post("A-Chaos Lib :: a-navier-stokes.e  " __DATE__" "__TIME__"                                   ©   a n d r Ž s i e r   2 0 0 4   all rights reserved",tick, 0);
+ post("A-Chaos Lib :: a-navier-stokes.e  " __DATE__" "__TIME__"                                   Â©   a n d r Ã© s i e r   2 0 0 4   all rights reserved",tick, 0);
 }
 
 
 void navierstokese_assist(navierstokese *x, void *b, long m, long a, char *s)
 {
-    if (m==1) { sprintf(s,"ping, (int), (float), ·, ¶ª"); }   
+    if (m==1) { sprintf(s,"ping, (int), (float), âˆ‘, âˆ‚â„¢"); }   
     else if (m==2&&a==0) { sprintf(s,"(float) x  l o r e n t z   e         c            h              o"); }
     else if (m==2&&a==1) { sprintf(s,"(float) y  l o r e n t z   e         c            h              o"); }
     else if (m==2&&a==2) { sprintf(s,"(float) z  l o r e n t z   e         c            h              o"); }

@@ -260,7 +260,7 @@ void main(void)
  addmess((method)ikeda_om,"om", A_DEFLONG, 0);
 
  addmess((method)ikeda_assist,"assist", A_CANT, 0);
- post("A-Chaos Lib :: a-ikeda  " __DATE__" "__TIME__"                                   ©   a n d r Ž s i e r   2 0 0 4   all rights reserved",tick, 0);
+ post("A-Chaos Lib :: a-ikeda  " __DATE__" "__TIME__"                                   Â©   a n d r Ã© s i e r   2 0 0 4   all rights reserved",tick, 0);
 }
 
 

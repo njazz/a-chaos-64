@@ -275,13 +275,13 @@ void main(void)
  addmess((method)rossler_om,"om", A_DEFLONG, 0);
 
  addmess((method)rossler_assist,"assist", A_CANT, 0);
- post("A-Chaos Lib :: a-rossler  " __DATE__" "__TIME__"                                   ©   a n d r Ž s i e r   2 0 0 4   all rights reserved",tick, 0);
+ post("A-Chaos Lib :: a-rossler  " __DATE__" "__TIME__"                                   Â©   a n d r Ã© s i e r   2 0 0 4   all rights reserved",tick, 0);
 }
 
 
 void rossler_assist(rossler *x, void *b, long m, long a, char *s)
 {
-    if (m==1) { sprintf(s,"bang, (int), (float), ·, ¶ª"); }   
+    if (m==1) { sprintf(s,"bang, (int), (float), âˆ‘, âˆ‚â„¢"); }   
     else if (m==2&&a==0) { sprintf(s,"(float) x  rossler   e         c            h              o"); }
     else if (m==2&&a==1) { sprintf(s,"(float) y  rossler   e         c            h              o"); }
     else if (m==2&&a==2) { sprintf(s,"(float) z  rossler   e         c            h              o"); }
