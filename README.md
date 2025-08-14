@@ -13,7 +13,12 @@ https://github.com/s373/a-objects_maxmspjitter_00-07
 
 -----
 
-To build:
+#### Dependencies:
+* Clone MAX SDK https://github.com/Cycling74/max-sdk to THISDIR/../max-sdk-8.2  
+or  
+* Specify the folder with -DMAX_SDK_DIR= flag for cmake
+
+#### To build:
 
 ```
 mkdir build
@@ -28,7 +33,7 @@ or
 ./scripts/build.sh
 ```
 
-To make package / install package:
+#### To make package / install package:
 
 ```
 ./cd scripts/make-package-osx.sh
