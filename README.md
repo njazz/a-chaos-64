@@ -42,19 +42,19 @@ or
 #### To make package / install package:
 
 ```
-./cd scripts/make-package-osx.sh
+./scripts/make-package-osx.sh
 ```
 
 or
 
 ```
-./install-package-7-osx.sh
+./scripts/install-package-7-osx.sh
 ```
 
 ```
-./install-package-8-osx.sh
+./scripts/install-package-8-osx.sh
 ```
 
 ```
-./install-package-9-osx.sh
+./scripts/install-package-9-osx.sh
 ```
