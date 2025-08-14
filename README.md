@@ -1,9 +1,11 @@
 # a-chaos-64
 This is a copy of André Sier "A-Chaos" library for MaxMSP updated for Max 7/8/9 64 bit x86 / arm64
 
-[![Build a-chaos-64 Windows](https://github.com/njazz/a-chaos-64/actions/workflows/build-windows.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/build-windows.yml)  
+[![Build a-chaos-64 Windows](https://github.com/njazz/a-chaos-64/actions/workflows/build-windows.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/build-windows.yml)
 [![Build a-chaos-64 macOS](https://github.com/njazz/a-chaos-64/actions/workflows/build-macos.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/build-macos.yml)  
-
+  
+[![Deploy a-chaos-64 Windows](https://github.com/njazz/a-chaos-64/actions/workflows/deploy-windows.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/deploy-windows.yml)
+[![Deploy a-chaos-64 macOS](https://github.com/njazz/a-chaos-64/actions/workflows/deploy-macos.yml/badge.svg)](https://github.com/njazz/a-chaos-64/actions/workflows/deploy-macos.yml)
 
 A-Chaos Lib is a library of non-linear strange attractors for the max programming environment extended from Richard Dudas' Chaos Collection, including the source.
 

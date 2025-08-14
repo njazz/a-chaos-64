@@ -1,4 +1,4 @@
-name: Build Windows
+name: Latest Build Windows
 
 on:
   push:
@@ -40,37 +40,37 @@ jobs:
         cd sources\a-chaos-64\build
         cmake --build . --config Release
 
-    # - name: Prepare package
-    #   run: |
-    #     cd sources\a-chaos-64
-    #     mkdir package
-    #     mkdir package\a-chaos-64
-    #     mkdir package\a-chaos-64\externals
-    #     mkdir package\a-chaos-64\help
-    #     mkdir package\a-chaos-64\extras
-    #     copy build\a*.mxo package\a-chaos-64\externals\
-    #     copy help\*.maxhelp package\a-chaos-64\help\
-    #     copy extras\*.* package\a-chaos-64\extras\
+    - name: Prepare package
+      run: |
+        cd sources\a-chaos-64
+        mkdir package
+        mkdir package\a-chaos-64
+        mkdir package\a-chaos-64\externals
+        mkdir package\a-chaos-64\help
+        mkdir package\a-chaos-64\extras
+        copy build\a*.mxo package\a-chaos-64\externals\
+        copy help\*.maxhelp package\a-chaos-64\help\
+        copy extras\*.* package\a-chaos-64\extras\
 
-    # - name: Create ZIP
-    #   run: |
-    #     cd sources\a-chaos-64
-    #     powershell Compress-Archive -Path package\a-chaos-64\* -DestinationPath a-chaos-64-windows.zip
+    - name: Create ZIP
+      run: |
+        cd sources\a-chaos-64
+        powershell Compress-Archive -Path package\a-chaos-64\* -DestinationPath a-chaos-64-windows.zip
     
-    # - name: Get or create release
-    #   shell: bash
-    #   env:
-    #     GH_TOKEN: ${{ github.token }}
-    #   run: |
-    #     gh release view latest || gh release create latest --title "a-chaos-64 latest"
-    #     UPLOAD_URL=$(gh release view latest --json uploadUrl -q .uploadUrl)
-    #     echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
+    - name: Get or create release
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh release view latest || gh release create latest --title "a-chaos-64 latest"
+        UPLOAD_URL=$(gh release view latest --json uploadUrl -q .uploadUrl)
+        echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
-    # - name: Upload ZIP
-    #   shell: bash
-    #   env:
-    #     GH_TOKEN: ${{ github.token }}
-    #   run: gh release upload latest sources/a-chaos-64/a-chaos-64-windows.zip --clobber
+    - name: Upload ZIP
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release upload latest sources/a-chaos-64/a-chaos-64-windows.zip --clobber
 
     # - name: Create Release
     #   uses: actions/create-release@v1

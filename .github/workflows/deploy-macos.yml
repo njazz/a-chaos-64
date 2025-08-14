@@ -1,4 +1,4 @@
-name: Build macOS
+name: Latest Build macOS
 
 on:
   push:
@@ -37,33 +37,33 @@ jobs:
         cd sources/a-chaos-64/build
         cmake --build . --config Release
 
-    # - name: Prepare package
-    #   run: |
-    #     cd sources/a-chaos-64
-    #     mkdir -p package/a-chaos-64/externals
-    #     mkdir -p package/a-chaos-64/help
-    #     mkdir -p package/a-chaos-64/extras
-    #     cp -r build/a*.mxo package/a-chaos-64/externals/
-    #     cp -r help/*.maxhelp package/a-chaos-64/help/
-    #     cp -r extras/*.* package/a-chaos-64/extras/
+    - name: Prepare package
+      run: |
+        cd sources/a-chaos-64
+        mkdir -p package/a-chaos-64/externals
+        mkdir -p package/a-chaos-64/help
+        mkdir -p package/a-chaos-64/extras
+        cp -r build/a*.mxo package/a-chaos-64/externals/
+        cp -r help/*.maxhelp package/a-chaos-64/help/
+        cp -r extras/*.* package/a-chaos-64/extras/
 
-    # - name: Create ZIP
-    #   run: |
-    #     cd sources/a-chaos-64
-    #     zip -r a-chaos-64-macos.zip package/a-chaos-64
+    - name: Create ZIP
+      run: |
+        cd sources/a-chaos-64
+        zip -r a-chaos-64-macos.zip package/a-chaos-64
 
-    # - name: Get or create release
-    #   env:
-    #     GH_TOKEN: ${{ github.token }}
-    #   run: |
-    #     gh release view latest || gh release create latest --title "a-chaos-64 latest"
-    #     UPLOAD_URL=$(gh release view latest --json uploadUrl -q .uploadUrl)
-    #     echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
+    - name: Get or create release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh release view latest || gh release create latest --title "a-chaos-64 latest"
+        UPLOAD_URL=$(gh release view latest --json uploadUrl -q .uploadUrl)
+        echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
-    # - name: Upload ZIP
-    #   env:
-    #     GH_TOKEN: ${{ github.token }}
-    #   run: gh release upload latest sources/a-chaos-64/a-chaos-64-macos.zip --clobber
+    - name: Upload ZIP
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release upload latest sources/a-chaos-64/a-chaos-64-macos.zip --clobber
 
     # - name: Create Release
     #   uses: actions/create-release@v1
