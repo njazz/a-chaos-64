@@ -48,7 +48,7 @@ jobs:
         mkdir package\a-chaos-64\externals
         mkdir package\a-chaos-64\help
         mkdir package\a-chaos-64\extras
-        copy build\Release\a*.mxo package\a-chaos-64\externals\
+        copy build\Release\a*.mx* package\a-chaos-64\externals\
         copy help\*.maxhelp package\a-chaos-64\help\
         copy extras\*.* package\a-chaos-64\extras\
 
